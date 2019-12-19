@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
     } catch (err) {
         next
     }
-})j
+})
 
 router.get("/:id", async (req, res, next) => {
     try {

@@ -16,6 +16,7 @@ server.use((err, req, res, next) => {
   console.log(err)
   return res.status(500).json({ message: 'Something is wrong' })
 })
+
 server.listen(port, () => {
   console.log(`Listening on http://${host}:${port}`)
 })

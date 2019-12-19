@@ -10,11 +10,11 @@ router.get("/", async (req, res, next) => {
     } catch (err) {
         next
     }
-})
+})j
 
 router.get("/:id", async (req, res, next) => {
     try {
-        // translates to 'SELECT * FROM posts WHERE id = ?' first = limit 1 (will take out the first in the array.)
+        // translates to 'SELECT * FROM posts WHERE id = (value)?' first = limit 1 (will take out the first in the array.)
         // const post = await db('posts').where('id', req.params.id).first()//.select()
         return res.json(await db('posts').where('id', req.params.id).first())
     } catch (err) {
@@ -29,7 +29,7 @@ router.post("/", async (req, res, next) => {
             title: req.body.title,
             contents: req.body.contents,
         }   
-            // translate to 'INSERT INTO post (title, contents) VALUES(?, ?);'
+            // translate to 'INSERT INTO posts (title, contents) VALUES(?, ?);'
             // .insert returns an array of IDs for the new rows, so we destructure it. 
             const [id] = await db('posts').insert(payload)
             return res.json(await db('posts').where('id', id).first())
